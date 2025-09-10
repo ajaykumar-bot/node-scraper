@@ -1,7 +1,8 @@
 const { chromium } = require("playwright");
+require("dotenv").config();
 
 async function run(url, selector) {
-	const browser = await chromium.launch({ headless: true });
+	const browser = await chromium.launch({ headless: false });
 	const context = await browser.newContext({
 		javaScriptEnabled: true,
 		bypassCSP: true,
@@ -33,8 +34,10 @@ async function run(url, selector) {
 	await browser.close();
 }
 
-const url = process.argv[2];
-const selector = process.argv[3];
+// const url = process.argv[2];
+// const selector = process.argv[3];
+const url = process.env.URL;
+const selector = process.env.CSS_SELECTOR;
 
 if (!url || !selector) {
 	console.error("Usage: node navigate.js <url> <css_selector>");

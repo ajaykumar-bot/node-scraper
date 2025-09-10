@@ -2,3 +2,8 @@
 package.json
 package-lock.json
 .env
+
+user_data
+output-*
+
+.env
